@@ -10,10 +10,6 @@ def sigm(x):
 
 
 def log_regr(X, y, batch_size, learning_rate, max_iters):
-    def _cost(X, y, weights):
-        return np.mean([np.log(1 + np.exp(-1. * y_true, np.dot(weights, val)))
-                        for val, y_true in zip(X, y)])
-
     X = np.hstack([np.ones((X.shape[0], 1)), np.array(X)])
     y = np.array(y)
     batch_size = int(batch_size * X.shape[0])
@@ -76,7 +72,7 @@ y_train = old['label'].as_matrix()
 X_test = new.drop(['label'], axis=1).as_matrix()
 y_test = new['label'].as_matrix()
 
-normalize = False
+normalize = True
 
 if normalize:
     transformer = StandardScaler()
